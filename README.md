@@ -9,7 +9,7 @@ Note this is intended for writing reference tables from DynamoDB to parquet file
 
 # Environment Variables:
 - **S3_OUTPUT_BUCKET** The S3 bucket to write the parquet file(s) to
-- **DYNAMO_PARQUET_ETL** JSON with the following format. Can either be an S3 location in the format _s3://bucket/key_ or direct JSON in the variable. You must minify it if it is directly in the variable. The values in the map _"fields"_ are in JSON Pointer format (RFC6901 - https://tools.ietf.org/html/rfc6901)
+- **DYNAMO_PARQUET_ETL** Can either be an S3 location in the format _s3://bucket/key_ or direct JSON in the variable. You must minify it if it is directly in the variable. The values in the map _"fields"_ are in JSON Pointer format (RFC6901 - https://tools.ietf.org/html/rfc6901)
 ```
 {
   "<dynamo-table-name>": {
@@ -25,7 +25,10 @@ Note this is intended for writing reference tables from DynamoDB to parquet file
       },
       "<field3>": {
         "value": "/val3" - defaults to the "string" type
-      }
+      },
+      "<field4>": {
+        "value" "/val4"
+        "type": "timestamp"
     }
   }
 }
